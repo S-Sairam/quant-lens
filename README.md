@@ -268,6 +268,7 @@ Contributions welcome! Please open an issue or PR.
 
 ## 💬 Contact
 
-Questions? Open an issue or reach out at: your-email@example.com
+Questions? Open an issue or reach out at: saisr2206@gmail.com
 
 **Happy quantizing! 🚀**
+
