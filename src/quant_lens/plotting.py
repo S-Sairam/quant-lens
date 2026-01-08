@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import torch
 
 
 def plot_overlay(traces_dict, save_path="loss_landscape.png", dpi=300):

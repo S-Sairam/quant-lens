@@ -1,0 +1,125 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.5.0 -- /home/sai/miniconda3/bin/python3.13
+cachedir: .pytest_cache
+rootdir: /home/sai/Projects/quant-lens
+configfile: pytest.ini
+collecting ... collected 34 items
+
+tests/test_core.py::TestQuantDiagnostic::test_initialization PASSED      [  2%]
+tests/test_core.py::TestQuantDiagnostic::test_add_int8_model_auto PASSED [  5%]
+tests/test_core.py::TestQuantDiagnostic::test_add_int8_model_custom PASSED [  8%]
+tests/test_core.py::TestQuantDiagnostic::test_run_analysis_returns_metrics PASSED [ 11%]
+tests/test_core.py::TestQuantDiagnostic::test_plot_requires_analysis PASSED [ 14%]
+tests/test_core.py::TestQuantDiagnostic::test_full_workflow PASSED       [ 17%]
+tests/test_geometry.py::TestGetRandomDirection::test_returns_list_same_length PASSED [ 20%]
+tests/test_geometry.py::TestGetRandomDirection::test_filter_normalization_applied PASSED [ 23%]
+tests/test_geometry.py::TestGetRandomDirection::test_direction_is_random PASSED [ 26%]
+tests/test_geometry.py::TestTrace1DLoss::test_returns_correct_number_of_points PASSED [ 29%]
+tests/test_geometry.py::TestTrace1DLoss::test_alpha_range PASSED         [ 32%]
+tests/test_geometry.py::TestTrace1DLoss::test_restores_original_weights FAILED [ 35%]
+tests/test_geometry.py::TestTrace1DLoss::test_loss_at_origin_is_current_loss PASSED [ 38%]
+tests/test_hessian.py::TestPowerIteration::test_returns_positive_eigenvalue PASSED [ 41%]
+tests/test_hessian.py::TestPowerIteration::test_convergence_with_more_iterations PASSED [ 44%]
+tests/test_hessian.py::TestPowerIteration::test_deterministic_with_seed PASSED [ 47%]
+tests/test_integration.py::TestIntegration::test_resnet_like_model PASSED [ 50%]
+tests/test_integration.py::TestIntegration::test_multiple_quantization_schemes PASSED [ 52%]
+tests/test_plotting.py::TestPlotOverlay::test_creates_plot_file PASSED   [ 55%]
+tests/test_plotting.py::TestPlotOverlay::test_handles_multiple_models PASSED [ 58%]
+tests/test_plotting.py::TestPlotOverlay::test_closes_figures PASSED      [ 61%]
+tests/test_quantization.py::TestFakeQuantOp::test_8bit_quantization_range FAILED [ 64%]
+tests/test_quantization.py::TestFakeQuantOp::test_quantization_is_deterministic FAILED [ 67%]
+tests/test_quantization.py::TestFakeQuantOp::test_zero_input FAILED      [ 70%]
+tests/test_quantization.py::TestFakeQuantOp::test_gradient_flows_backward FAILED [ 73%]
+tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[8-256] FAILED [ 76%]
+tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[4-16] FAILED [ 79%]
+tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[2-4] FAILED [ 82%]
+tests/test_quantization.py::TestQuantLinear::test_output_shape PASSED    [ 85%]
+tests/test_quantization.py::TestQuantLinear::test_forward_pass_runs PASSED [ 88%]
+tests/test_quantization.py::TestQuantLinear::test_quantized_different_from_fp32 PASSED [ 91%]
+tests/test_quantization.py::TestReplaceLinearLayers::test_converts_all_linear_layers PASSED [ 94%]
+tests/test_quantization.py::TestReplaceLinearLayers::test_preserves_weights PASSED [ 97%]
+tests/test_quantization.py::TestReplaceLinearLayers::test_preserves_bias PASSED [100%]
+
+=================================== FAILURES ===================================
+________________ TestTrace1DLoss.test_restores_original_weights ________________
+tests/test_geometry.py:72: in test_restores_original_weights
+    _, _ = trace_1d_loss(
+src/quant_lens/geometry.py:76: in trace_1d_loss
+    output = model(inputs)
+             ^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py:1773: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py:1784: in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/nn/modules/linear.py:125: in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: mat1 and mat2 shapes cannot be multiplied (8x10 and 3x2)
+_________________ TestFakeQuantOp.test_8bit_quantization_range _________________
+tests/test_quantization.py:13: in test_8bit_quantization_range
+    quantized = FakeQuantOp.apply(x, num_bits=8)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/autograd/function.py:576: in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: apply() takes no keyword arguments
+______________ TestFakeQuantOp.test_quantization_is_deterministic ______________
+tests/test_quantization.py:23: in test_quantization_is_deterministic
+    result1 = FakeQuantOp.apply(x, num_bits=8)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/autograd/function.py:576: in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: apply() takes no keyword arguments
+_______________________ TestFakeQuantOp.test_zero_input ________________________
+tests/test_quantization.py:31: in test_zero_input
+    quantized = FakeQuantOp.apply(x, num_bits=8)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/autograd/function.py:576: in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: apply() takes no keyword arguments
+_________________ TestFakeQuantOp.test_gradient_flows_backward _________________
+tests/test_quantization.py:37: in test_gradient_flows_backward
+    y = FakeQuantOp.apply(x, num_bits=8)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/autograd/function.py:576: in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: apply() takes no keyword arguments
+_______________ TestFakeQuantOp.test_different_bit_widths[8-256] _______________
+tests/test_quantization.py:53: in test_different_bit_widths
+    quantized = FakeQuantOp.apply(x, num_bits=num_bits)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/autograd/function.py:576: in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: apply() takes no keyword arguments
+_______________ TestFakeQuantOp.test_different_bit_widths[4-16] ________________
+tests/test_quantization.py:53: in test_different_bit_widths
+    quantized = FakeQuantOp.apply(x, num_bits=num_bits)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/autograd/function.py:576: in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: apply() takes no keyword arguments
+________________ TestFakeQuantOp.test_different_bit_widths[2-4] ________________
+tests/test_quantization.py:53: in test_different_bit_widths
+    quantized = FakeQuantOp.apply(x, num_bits=num_bits)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../miniconda3/lib/python3.13/site-packages/torch/autograd/function.py:576: in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: apply() takes no keyword arguments
+=========================== short test summary info ============================
+FAILED tests/test_geometry.py::TestTrace1DLoss::test_restores_original_weights - RuntimeError: mat1 and mat2 shapes cannot be multiplied (8x10 and 3x2)
+FAILED tests/test_quantization.py::TestFakeQuantOp::test_8bit_quantization_range - TypeError: apply() takes no keyword arguments
+FAILED tests/test_quantization.py::TestFakeQuantOp::test_quantization_is_deterministic - TypeError: apply() takes no keyword arguments
+FAILED tests/test_quantization.py::TestFakeQuantOp::test_zero_input - TypeError: apply() takes no keyword arguments
+FAILED tests/test_quantization.py::TestFakeQuantOp::test_gradient_flows_backward - TypeError: apply() takes no keyword arguments
+FAILED tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[8-256] - TypeError: apply() takes no keyword arguments
+FAILED tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[4-16] - TypeError: apply() takes no keyword arguments
+FAILED tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[2-4] - TypeError: apply() takes no keyword arguments
+========================= 8 failed, 26 passed in 2.35s =========================

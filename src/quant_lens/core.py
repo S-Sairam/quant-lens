@@ -63,6 +63,8 @@ class QuantDiagnostic:
         Returns:
             Dictionary of metrics for each model
         """
+        import torch.nn as nn 
+
         criterion = nn.CrossEntropyLoss()
         
         print("\n" + "="*60)
