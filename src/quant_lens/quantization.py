@@ -63,3 +63,4 @@ def replace_linear_layers(model, num_bits=8):
     
     recursive_replace(model_q)
     return model_q
+

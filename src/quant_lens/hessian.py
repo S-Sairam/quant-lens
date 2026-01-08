@@ -1,4 +1,5 @@
 import torch
+
 def power_iteration(model, dataloader, criterion, device, num_iters=20):
     """
     Computes the top eigenvalue of the Hessian using power iteration.
@@ -68,3 +69,4 @@ def power_iteration(model, dataloader, criterion, device, num_iters=20):
     eigenvalue = sum([torch.sum(h * vi) for h, vi in zip(hv, v)]).item()
     
     return eigenvalue
+

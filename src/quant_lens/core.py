@@ -1,3 +1,13 @@
+# In core.py
+import torch
+import torch.nn as nn
+from typing import Dict, Optional, Tuple, Any
+
+# Relative imports (CRITICAL!)
+from .quantization import replace_linear_layers
+from .geometry import trace_1d_loss
+from .hessian import power_iteration
+from .plotting import plot_overlay
 class QuantDiagnostic:
     """
     Main diagnostic tool for quantization analysis.
@@ -114,3 +124,4 @@ class QuantDiagnostic:
         
         print(f"\n📈 Generating visualization...")
         plot_overlay(self.traces, save_path, dpi)
+

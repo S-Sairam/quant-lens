@@ -83,3 +83,4 @@ def trace_1d_loss(model, loader, criterion, device, steps=25, distance=0.5):
             p.data = w0.clone()
     
     return alphas, losses
+
