@@ -144,7 +144,7 @@ def get_loaders():
         trainset,
         batch_size=Config.TRAIN_BATCH_SIZE,
         shuffle=True,
-        num_workers=2,
+        num_workers=8,
         pin_memory=True
     )
     
@@ -157,7 +157,7 @@ def get_loaders():
         analysis_set,
         batch_size=Config.ANALYSIS_BATCH_SIZE,
         shuffle=False,
-        num_workers=2
+        num_workers=4
     )
     
     return train_loader, analysis_loader

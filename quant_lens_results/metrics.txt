@@ -1,0 +1,9 @@
+Bit Collapse Analysis Results
+==================================================
+
+FP32 Baseline Sharpness:  44.451965
+Int8 SGD Sharpness:       5.724568
+Int8 SAM Sharpness:       10.525882
+
+SGD Ratio (Int8/FP32):    0.1288x
+SAM Ratio (Int8/FP32):    0.2368x
