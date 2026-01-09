@@ -28,7 +28,7 @@ When you quantize a model from FP32 → INT8, you're compressing billions of rea
 ### Installation
 
 ```bash
-pip install torch torchvision numpy matplotlib
+pip install torch torchvision numpy matplotlib quant-lens
 ```
 
 ### Basic Usage
@@ -85,7 +85,7 @@ Computes the top eigenvalue (λ_max) of the Hessian using Power Iteration:
 ### 2. **Loss Landscape Visualization**
 Traces the loss surface along a random direction using **Filter Normalization** (Li et al., 2018):
 
-![Example Landscape](https://via.placeholder.com/800x400.png?text=FP32+vs+Int8+Loss+Landscape)
+![Example Landscape](quant_lens_results/bit_collapse_analysis.png)
 
 **Blue Line (FP32):** Wide, smooth valley ✅  
 **Red Line (Int8):** Narrow, jagged ravine ⚠️
