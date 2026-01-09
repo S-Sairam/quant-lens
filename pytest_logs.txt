@@ -123,3 +123,95 @@ FAILED tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[8-
 FAILED tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[4-16] - TypeError: apply() takes no keyword arguments
 FAILED tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[2-4] - TypeError: apply() takes no keyword arguments
 ========================= 8 failed, 26 passed in 2.35s =========================
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.5.0 -- /home/sai/miniconda3/bin/python3.13
+cachedir: .pytest_cache
+rootdir: /home/sai/Projects/quant-lens
+configfile: pytest.ini
+collecting ... collected 34 items
+
+tests/test_core.py::TestQuantDiagnostic::test_initialization PASSED      [  2%]
+tests/test_core.py::TestQuantDiagnostic::test_add_int8_model_auto PASSED [  5%]
+tests/test_core.py::TestQuantDiagnostic::test_add_int8_model_custom PASSED [  8%]
+tests/test_core.py::TestQuantDiagnostic::test_run_analysis_returns_metrics PASSED [ 11%]
+tests/test_core.py::TestQuantDiagnostic::test_plot_requires_analysis PASSED [ 14%]
+tests/test_core.py::TestQuantDiagnostic::test_full_workflow PASSED       [ 17%]
+tests/test_geometry.py::TestGetRandomDirection::test_returns_list_same_length PASSED [ 20%]
+tests/test_geometry.py::TestGetRandomDirection::test_filter_normalization_applied PASSED [ 23%]
+tests/test_geometry.py::TestGetRandomDirection::test_direction_is_random PASSED [ 26%]
+tests/test_geometry.py::TestTrace1DLoss::test_returns_correct_number_of_points PASSED [ 29%]
+tests/test_geometry.py::TestTrace1DLoss::test_alpha_range PASSED         [ 32%]
+tests/test_geometry.py::TestTrace1DLoss::test_restores_original_weights PASSED [ 35%]
+tests/test_geometry.py::TestTrace1DLoss::test_loss_at_origin_is_current_loss PASSED [ 38%]
+tests/test_hessian.py::TestPowerIteration::test_returns_numeric_eigenvalue PASSED [ 41%]
+tests/test_hessian.py::TestPowerIteration::test_convergence_with_more_iterations PASSED [ 44%]
+tests/test_hessian.py::TestPowerIteration::test_deterministic_with_seed PASSED [ 47%]
+tests/test_integration.py::TestIntegration::test_resnet_like_model PASSED [ 50%]
+tests/test_integration.py::TestIntegration::test_multiple_quantization_schemes PASSED [ 52%]
+tests/test_plotting.py::TestPlotOverlay::test_creates_plot_file PASSED   [ 55%]
+tests/test_plotting.py::TestPlotOverlay::test_handles_multiple_models PASSED [ 58%]
+tests/test_plotting.py::TestPlotOverlay::test_closes_figures PASSED      [ 61%]
+tests/test_quantization.py::TestFakeQuantOp::test_8bit_quantization_range PASSED [ 64%]
+tests/test_quantization.py::TestFakeQuantOp::test_quantization_is_deterministic PASSED [ 67%]
+tests/test_quantization.py::TestFakeQuantOp::test_zero_input PASSED      [ 70%]
+tests/test_quantization.py::TestFakeQuantOp::test_gradient_flows_backward PASSED [ 73%]
+tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[8-256] PASSED [ 76%]
+tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[4-16] PASSED [ 79%]
+tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[2-4] PASSED [ 82%]
+tests/test_quantization.py::TestQuantLinear::test_output_shape PASSED    [ 85%]
+tests/test_quantization.py::TestQuantLinear::test_forward_pass_runs PASSED [ 88%]
+tests/test_quantization.py::TestQuantLinear::test_quantized_different_from_fp32 PASSED [ 91%]
+tests/test_quantization.py::TestReplaceLinearLayers::test_converts_all_linear_layers PASSED [ 94%]
+tests/test_quantization.py::TestReplaceLinearLayers::test_preserves_weights PASSED [ 97%]
+tests/test_quantization.py::TestReplaceLinearLayers::test_preserves_bias PASSED [100%]
+
+============================== 34 passed in 4.13s ==============================
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.5.0 -- /home/sai/miniconda3/bin/python3.13
+cachedir: .pytest_cache
+rootdir: /home/sai/Projects/quant-lens
+configfile: pytest.ini
+collecting ... collected 40 items
+
+tests/test_core.py::TestQuantDiagnostic::test_initialization PASSED      [  2%]
+tests/test_core.py::TestQuantDiagnostic::test_add_int8_model_auto PASSED [  5%]
+tests/test_core.py::TestQuantDiagnostic::test_add_int8_model_custom PASSED [  7%]
+tests/test_core.py::TestQuantDiagnostic::test_run_analysis_returns_metrics PASSED [ 10%]
+tests/test_core.py::TestQuantDiagnostic::test_plot_requires_analysis PASSED [ 12%]
+tests/test_core.py::TestQuantDiagnostic::test_full_workflow PASSED       [ 15%]
+tests/test_geometry.py::TestGetRandomDirection::test_returns_list_same_length PASSED [ 17%]
+tests/test_geometry.py::TestGetRandomDirection::test_filter_normalization_applied PASSED [ 20%]
+tests/test_geometry.py::TestGetRandomDirection::test_direction_is_random PASSED [ 22%]
+tests/test_geometry.py::TestTrace1DLoss::test_returns_correct_number_of_points PASSED [ 25%]
+tests/test_geometry.py::TestTrace1DLoss::test_alpha_range PASSED         [ 27%]
+tests/test_geometry.py::TestTrace1DLoss::test_restores_original_weights PASSED [ 30%]
+tests/test_geometry.py::TestTrace1DLoss::test_loss_at_origin_is_current_loss PASSED [ 32%]
+tests/test_hessian.py::TestPowerIteration::test_returns_numeric_eigenvalue PASSED [ 35%]
+tests/test_hessian.py::TestPowerIteration::test_convergence_with_more_iterations PASSED [ 37%]
+tests/test_hessian.py::TestPowerIteration::test_deterministic_with_seed PASSED [ 40%]
+tests/test_hessian.py::TestPowerIteration::test_quadratic_loss_known_eigenvalue PASSED [ 42%]
+tests/test_hessian.py::TestPowerIteration::test_diagonal_matrix_eigenvalues PASSED [ 45%]
+tests/test_integration.py::TestIntegration::test_resnet_like_model PASSED [ 47%]
+tests/test_integration.py::TestIntegration::test_multiple_quantization_schemes PASSED [ 50%]
+tests/test_math.py::TestPowerIterationRigorous::test_quadratic_loss_known_eigenvalue PASSED [ 52%]
+tests/test_math.py::TestPowerIterationRigorous::test_diagonal_matrix_eigenvalues PASSED [ 55%]
+tests/test_math.py::TestPowerIterationRigorous::test_2x2_matrix_analytical_solution PASSED [ 57%]
+tests/test_math.py::TestPowerIterationRigorous::test_convergence_to_true_eigenvalue PASSED [ 60%]
+tests/test_plotting.py::TestPlotOverlay::test_creates_plot_file PASSED   [ 62%]
+tests/test_plotting.py::TestPlotOverlay::test_handles_multiple_models PASSED [ 65%]
+tests/test_plotting.py::TestPlotOverlay::test_closes_figures PASSED      [ 67%]
+tests/test_quantization.py::TestFakeQuantOp::test_8bit_quantization_range PASSED [ 70%]
+tests/test_quantization.py::TestFakeQuantOp::test_quantization_is_deterministic PASSED [ 72%]
+tests/test_quantization.py::TestFakeQuantOp::test_zero_input PASSED      [ 75%]
+tests/test_quantization.py::TestFakeQuantOp::test_gradient_flows_backward PASSED [ 77%]
+tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[8-256] PASSED [ 80%]
+tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[4-16] PASSED [ 82%]
+tests/test_quantization.py::TestFakeQuantOp::test_different_bit_widths[2-4] PASSED [ 85%]
+tests/test_quantization.py::TestQuantLinear::test_output_shape PASSED    [ 87%]
+tests/test_quantization.py::TestQuantLinear::test_forward_pass_runs PASSED [ 90%]
+tests/test_quantization.py::TestQuantLinear::test_quantized_different_from_fp32 PASSED [ 92%]
+tests/test_quantization.py::TestReplaceLinearLayers::test_converts_all_linear_layers PASSED [ 95%]
+tests/test_quantization.py::TestReplaceLinearLayers::test_preserves_weights PASSED [ 97%]
+tests/test_quantization.py::TestReplaceLinearLayers::test_preserves_bias PASSED [100%]
+
+============================== 40 passed in 3.08s ==============================

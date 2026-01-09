@@ -10,7 +10,7 @@ class TestFakeQuantOp:
     def test_8bit_quantization_range(self):
         """8-bit quantization should clip to [-128, 127]"""
         x = torch.tensor([[-200.0, 0.0, 200.0]])
-        quantized = FakeQuantOp.apply(x, num_bits=8)
+        quantized = FakeQuantOp.apply(x, 8)
         
         # Values should be within 8-bit range after scaling
         assert quantized.min() >= -128 * (x.abs().max() / 127)
@@ -20,21 +20,21 @@ class TestFakeQuantOp:
         """Same input should always produce same output"""
         x = torch.tensor([[1.5, 2.7, 3.9]])
         
-        result1 = FakeQuantOp.apply(x, num_bits=8)
-        result2 = FakeQuantOp.apply(x, num_bits=8)
+        result1 = FakeQuantOp.apply(x, 8)
+        result2 = FakeQuantOp.apply(x, 8)
         
         assert torch.allclose(result1, result2)
     
     def test_zero_input(self):
         """Zero input should return zero"""
         x = torch.zeros(5, 10)
-        quantized = FakeQuantOp.apply(x, num_bits=8)
+        quantized = FakeQuantOp.apply(x, 8)
         assert torch.allclose(quantized, torch.zeros_like(x))
     
     def test_gradient_flows_backward(self):
         """STE should allow gradients to flow (not be zero)"""
         x = torch.tensor([[1.5, 2.7, 3.9]], requires_grad=True)
-        y = FakeQuantOp.apply(x, num_bits=8)
+        y = FakeQuantOp.apply(x, 8)
         loss = y.sum()
         loss.backward()
         
@@ -50,7 +50,7 @@ class TestFakeQuantOp:
     def test_different_bit_widths(self, num_bits, expected_levels):
         """Different bit widths should produce appropriate quantization"""
         x = torch.linspace(-10, 10, 1000)
-        quantized = FakeQuantOp.apply(x, num_bits=num_bits)
+        quantized = FakeQuantOp.apply(x, num_bits)
         
         # Count unique values (should be <= expected levels)
         unique_values = torch.unique(quantized)

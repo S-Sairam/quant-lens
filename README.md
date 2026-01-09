@@ -7,6 +7,7 @@ Visualize loss landscapes and Hessian sharpness to diagnose "bit collapse" in qu
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Tests](https://github.com/S-Sairam/quant-lens/actions/workflows/tests.yml/badge.svg)
 
 ---
 

@@ -63,18 +63,18 @@ class TestTrace1DLoss:
         assert abs(alphas[0] - (-distance)) < 1e-6
         assert abs(alphas[-1] - distance) < 1e-6
     
-    def test_restores_original_weights(self, known_weights_model, dummy_dataloader, device):
+    def test_restores_original_weights(self, simple_model, dummy_dataloader, device):
         """Model weights should be restored after tracing"""
-        criterion = nn.MSELoss()
-        original_weights = known_weights_model.weight.data.clone()
+        criterion = nn.CrossEntropyLoss()
+        original_weights = simple_model[0].weight.data.clone()
         
         # Trace landscape
         _, _ = trace_1d_loss(
-            known_weights_model, dummy_dataloader, criterion, device, steps=5
+            simple_model, dummy_dataloader, criterion, device, steps=5
         )
         
         # Weights should be unchanged
-        assert torch.allclose(known_weights_model.weight.data, original_weights)
+        assert torch.allclose(simple_model[0].weight.data, original_weights)
     
     def test_loss_at_origin_is_current_loss(self, simple_model, dummy_dataloader, device):
         """Loss at alpha=0 should match current model's loss"""
