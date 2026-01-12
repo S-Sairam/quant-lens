@@ -260,6 +260,7 @@ MIT License - See LICENSE file for details
 Contributions welcome! Please open an issue or PR.
 
 **Roadmap:**
+- [ ] Quantizing biases
 - [ ] 2D landscape visualization
 - [ ] Batch Normalization statistics tracking
 - [ ] Layer-wise sharpness analysis
